@@ -6,3 +6,11 @@ Content-Type: application/json
 }
 
 ###
+
+PUT http://localhost:8080/api/v1/createMovie
+Content-Type: application/json
+
+###
+
+DELETE http://localhost:8080/api/v1/deleteMovie/{{idToDelete}}
+Content-Type: application/json

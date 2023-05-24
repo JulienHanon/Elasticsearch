@@ -26,7 +26,7 @@ public class MovieWikiController {
         return this.movieWikiRepository.getMovieById(id);
     }
 
-    @GetMapping ("api/v1/createMovie")
+    @PutMapping ("api/v1/createMovie")
     public IndexResponse createMovie() throws IOException {
         return this.movieWikiRepository.createMovie();
     }
@@ -36,7 +36,7 @@ public class MovieWikiController {
         return this.movieWikiRepository.updateMovieById(id, newMovie);
     }
 
-    @GetMapping("api/v1/deleteMovie/{id}")
+    @DeleteMapping("api/v1/deleteMovie/{id}")
     public Boolean deleteMovieById(@PathVariable String id) throws IOException {
         return this.movieWikiRepository.deleteMovieById(id);
     }
