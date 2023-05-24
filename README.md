@@ -20,10 +20,31 @@ Etape d'installation Elasticsearch avec Docker :
 
 # Copie du certificat sur la machine locale (pas nécéssaire) : 
 
-    - docker cp <nomconteneur>:/usr/share/elasticsearch/config/certs/http_ca.crt
+    - docker cp <nomconteneur>:/usr/share/elasticsearch/config/certs/http_ca.crt .
 
 # Vérifier que la connection a elasticsearch est possible (pas nécéssaire) :
 
     - curl --cacert http_ca.crt -u elastic https://localhost:9200
 
+Une fois que tout les conteneurs sont en place on peut se rendre a l'adresse https://localhost:5061
+ou il va falloir insérer le token kibana a trouver dans les logs du conteneur elasticsearch de meme pour le mot de passe utilisateur.
 
+
+Comment Elasticsearch procède-t-il au mapping ? 
+    
+
+Peut-on modifier le mapping sans recréer l’index ?
+
+    Oui c'est possible exemple : 
+
+    PUT /test-index/_mapping
+    {
+    "properties": {
+        "field2": { "type": "text" }
+        }
+    }
+
+Tokenisation : 
+    découper une phrase en "tokens" chaque token représente un mot de la phrase.
+Normalisation : 
+    passage d'un filtre sur les tokens par exemple : enlever les majuscules.
