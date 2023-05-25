@@ -101,3 +101,5 @@ Elasticsearch est conçu pour s'adapter aux changement de dimensions pour répon
     on peux créer plusieurs panneaux différents avec les données que l'on souhaite :
 
 ![](assets/dashboard.png)
+
+l'équivalent d'un schéma est IndexPattern c'est pour cela qu'aucune des propositions du qcm était juste.
