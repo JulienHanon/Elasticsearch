@@ -35,6 +35,11 @@ Importer le fichier csv disponible dans 'assets/2020s-movies.csv'
 et créer une index "moviewiki" il est possible que les noms de colonnes ne soient pas les mêmes dans ce cas
 il faut préciser "name", "image", "plot".
 
+dans le repertoire demo se trouve l'application pour créer notre crud qui se lance sur le port localhost:8080
+une fois le conteneur lancer il va falloir se rendre dans MainConfig.java et modifier private String password pour mettre le mot de passe génerer par le conteneur et faire de même pour String fingerprint.
+
+dans le repertoire webapp se trouve l'application web pour rechercher des données provenant du crud
+
 # Comment Elasticsearch procède-t-il au mapping ? 
     
     Elasticsearch peux mapper ses indexs de deux manière :
@@ -71,4 +76,27 @@ il faut préciser "name", "image", "plot".
 
 ![](assets/schema.jpg)
 
+- Nous avont tout d'abord le cluster qui est un groupe de noeud.
+- Chaque noeud possède des index (équivalent des tables en SQL).
+- Les documents sont les données d'un index et sont stockés a l'intérieur.
+- Les shards sont des fractions d'index, et se partagent les données d'un index dans l'exemple ci-dessus notre index se divise en deux shard et chaque shard possède donc 1/2 des données de l'index.
+- Les alias permettent de "regrouper" des index sous un même nom pour facilité la recherche d'information.
+- Les replica sont des copies de shard dans d'autre noeud, cela permet d'avoir une sauvegarde des données en cas de panne.
 
+# Mise à l'échelle : 
+
+Elasticsearch est conçu pour s'adapter aux changement de dimensions pour répondre aux besoins de stockage et de traitements de données par le biais de noeud et shard ou encore les replica.
+
+## Kibana 
+
+# Quel est l'usage principal de Kibana ? 
+
+    Kibana est utilisé pour faire de la data-visualisation et va nous permettre de visualisé les données stockés dans elasticsearch
+
+# Qu'est ce qu'un Dashboard ?
+
+    c'est une interface visuelle et personnalisable qui présente les données d'elasticsearch en temps réel
+
+    on peux créer plusieurs panneaux différents avec les données que l'on souhaite :
+
+![](assets/dashboard.png)
