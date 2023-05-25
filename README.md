@@ -55,4 +55,4 @@ Peut-on modifier le mapping sans recréer l’index ?
 
 # Schéma fonctionnement Elasticsearch :
 
-![](/schema.png)
+![](assets/schema.jpg)
