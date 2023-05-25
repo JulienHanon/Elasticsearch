@@ -13,13 +13,18 @@ export const SearchBar = () => {
     };
 
     const fetchData = (value: string) => {
+        if (value.trim() === "") {
+            setMovies([]);
+            return;
+        }
         fetch(`http://localhost:8080/api/v1/getMovieName/${encodeURIComponent(value)}`)
             .then((response) => response.json())
             .then((json: Movie[]) => {
                 setMovies(json);
-
+                console.log(movies)
             })
             .catch((error: Error) => {
+                console.log(movies)
                 console.error("Error fetching data:", error);
                 setMovies([]);
 
