@@ -1,3 +1,10 @@
+GET http://localhost:8080/api/v1/getMovieName/{{name}}
+###
+
+GET http://localhost:8080/api/v1/getMovieId/{{id}}
+Content-Type: application/json
+###
+
 PUT http://localhost:8080/api/v1/updateMovie/{{idToUpdate}}
 Content-Type: application/json
 

@@ -1,14 +1,16 @@
 package com.example.demo.repositories;
 
 import co.elastic.clients.elasticsearch.ElasticsearchClient;
-import co.elastic.clients.elasticsearch._types.Result;
 import co.elastic.clients.elasticsearch.core.*;
+import co.elastic.clients.elasticsearch.core.search.Hit;
 import com.example.demo.models.MovieWiki;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.CollectionUtils;
-import org.springframework.util.StringUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import java.io.IOException;
 
@@ -20,7 +22,7 @@ public class MovieWikiRepository {
 
     private final String indexName = "moviewiki";
 
-    public MovieWiki getMovieByName(String MovieName){
+    public List<MovieWiki> getMovieByName(String MovieName){
         SearchResponse<MovieWiki> MovieResponse = null;
         try {
             MovieResponse = this.ELASTICSEARCH_CLIENT.search(s -> s
@@ -29,6 +31,7 @@ public class MovieWikiRepository {
                             .query(q -> q
                                     .match(t -> t
                                             .field("name")
+                                            .fuzziness("auto")
                                             .query(MovieName))
                             ),
                     MovieWiki.class
@@ -36,14 +39,17 @@ public class MovieWikiRepository {
         } catch (IOException e) {
             log.error("Exception while searching profile", e);
         }
+        List<MovieWiki> returnedMovie = new ArrayList<>();
 
-        MovieWiki returnedMovie =  new MovieWiki();
         if ((MovieResponse == null) || (CollectionUtils.isEmpty(MovieResponse.hits().hits()))) {
-            return new MovieWiki();
+            return new ArrayList<>();
         }
 
-
-        returnedMovie = MovieResponse.hits().hits().get(0).source();
+        List<Hit<MovieWiki>> hits = MovieResponse.hits().hits();
+        for (Hit<MovieWiki> hit : hits) {
+            MovieWiki tmpMovie = hit.source();
+            returnedMovie.add(tmpMovie);
+        }
         return returnedMovie;
     }
 

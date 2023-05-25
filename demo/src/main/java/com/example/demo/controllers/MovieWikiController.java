@@ -6,6 +6,7 @@ import com.example.demo.repositories.MovieWikiRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 public class MovieWikiController {
@@ -17,7 +18,7 @@ public class MovieWikiController {
     }
 
     @GetMapping("api/v1/getMovieName/{name}")
-    public MovieWiki getMovieByName(@PathVariable String name) {
+    public List<MovieWiki> getMovieByName(@PathVariable String name) {
         return this.movieWikiRepository.getMovieByName(name);
     }
 
