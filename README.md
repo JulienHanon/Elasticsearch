@@ -44,7 +44,15 @@ Peut-on modifier le mapping sans recréer l’index ?
         }
     }
 
-Tokenisation : 
+# Tokenisation : 
+
     découper une phrase en "tokens" chaque token représente un mot de la phrase.
-Normalisation : 
+# Normalisation : 
+
     passage d'un filtre sur les tokens par exemple : enlever les majuscules.
+
+# TP3 
+
+# Schéma fonctionnement Elasticsearch :
+
+![](/schema.png)
