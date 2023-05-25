@@ -31,7 +31,8 @@ ou il va falloir insérer le token kibana a trouver dans les logs du conteneur e
 
 # source de donnée : 
 
-Importer le fichier csv disponible dans 'assets/2020s-movies.csv'
+Importer le fichier csv disponible dans 'assets/2020s-movies.csv' qui peut-être également télécharger à cette adresse : 
+https://www.kaggle.com/datasets/exactful/wikipedia-movies
 et créer une index "moviewiki" il est possible que les noms de colonnes ne soient pas les mêmes dans ce cas
 il faut préciser "name", "image", "plot".
 
